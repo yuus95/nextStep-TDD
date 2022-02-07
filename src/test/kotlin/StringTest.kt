@@ -20,7 +20,7 @@ class StringTest {
         val splitString = "1,".split(",")
         //when
         println(arrayOf("1")[0])
-        println("${splitString[0]}")
+        println(splitString[0])
         println(arrayOf("1").size)
         println("${splitString.size}")
         Assertions.assertArrayEquals(arrayOf(splitString) , arrayOf("1"))
