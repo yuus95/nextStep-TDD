@@ -10,7 +10,7 @@ class InputPriority {
 
 
     @Test
-    fun `입력우선순위 계산기`(){
+    fun `입력 우선 순위 계산기`(){
         //given
         val data: String = "2 + 3 * 4 / 2"
         val stdin = System.`in`
