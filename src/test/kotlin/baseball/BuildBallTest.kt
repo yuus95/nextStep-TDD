@@ -10,7 +10,7 @@ class BuildBallTest {
     @Test
     @DisplayName("유효성 검사를 한 뒤 볼을 생성한다.")
     fun buildBall() {
-        ball.buildBall(0, 1)
+        ball.buildBall(0)
         Assertions.assertTrue(ball.checkNumber(1))
     }
 }
