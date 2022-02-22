@@ -1,16 +1,16 @@
 package baseball
 
+import java.security.InvalidParameterException
+
 private const val INPUT_START_NUMBER = 1
 private const val INPUT_LAST_NUMBER = 9
 
 class Ball {
     private var number: Int = 0
-    private var position: Int = 0
 
-    fun buildBall(position: Int, number: Int) {
+    fun buildBall(number: Int) {
         if (inputNumber(number)) {
             this.number = number
-            this.position = position
         }
     }
 
@@ -18,7 +18,7 @@ class Ball {
         if (number in INPUT_START_NUMBER..INPUT_LAST_NUMBER) {
             return true
         }
-        return false
+        throw InvalidParameterException("숫자입력 오류")
     }
 
     fun checkNumber(compareNumber: Int): Boolean {
