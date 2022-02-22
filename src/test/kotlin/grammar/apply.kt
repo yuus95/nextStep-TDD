@@ -6,7 +6,6 @@ class apply {
     class Person(var name: String = "", var age: Int = 0) {
     }
 
-
     @Test
     fun normalPrint() {
         //given
@@ -16,7 +15,6 @@ class apply {
         println(person.name)
         println(person.age)
     }
-
 
     @Test
     fun applyPrint() {
