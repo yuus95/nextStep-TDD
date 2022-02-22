@@ -4,25 +4,22 @@ import baseball.Ball
 
 class BallList {
     val ballList = mutableListOf<Ball>()
+    val ballNumberSet = mutableSetOf<Int>()
 
     fun buildBallList(inputNumber: String) {
         iterateBuildBall(inputNumber)
-
     }
 
     fun iterateBuildBall(inputString: String) {
-        for( stringNumber in inputString){
-            ballFromString(stringNumber.toString().toInt())
+        for (stringNumber in inputString) {
+            buildBallAndBallNumberSet(stringNumber.toString().toInt())
         }
     }
 
-    private fun ballFromString(inputNumber: Int){
-        try {
-            val ball = Ball()
-            ball.buildBall(inputNumber)
-            ballList.add(ball)
-        }catch(e: Exception){
-            println("숫자 오류")
-        }
+    fun buildBallAndBallNumberSet(inputNumber: Int) {
+        val ball = Ball()
+        ball.buildBall(inputNumber)
+        ballList.add(ball)
+        ballNumberSet.add(inputNumber)
     }
 }

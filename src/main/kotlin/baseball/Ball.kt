@@ -12,14 +12,13 @@ class Ball {
         if (inputNumber(number)) {
             this.number = number
         }
-
     }
 
     fun inputNumber(number: Int): Boolean {
         if (number in INPUT_START_NUMBER..INPUT_LAST_NUMBER) {
             return true
         }
-        throw InvalidParameterException()
+        throw InvalidParameterException("숫자입력 오류")
     }
 
     fun checkNumber(compareNumber: Int): Boolean {
