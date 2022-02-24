@@ -13,14 +13,14 @@ class BallList {
     }
 
     private fun iterateBuildBall(inputString: String) {
-        for (stringNumber in inputString) {
-            buildBallAndBallNumberSet(stringNumber.toString().toInt())
+        for (i in 0 until 3) {
+            buildBallAndBallNumberSet(i,inputString[i].toString().toInt())
         }
     }
 
-    private fun buildBallAndBallNumberSet(inputNumber: Int) {
+    private fun buildBallAndBallNumberSet(position: Int,inputNumber: Int) {
         val ball = Ball()
-        ball.buildBall(inputNumber)
+        ball.buildBall(position,inputNumber)
         ballList.add(ball)
         ballNumberSet.add(inputNumber)
     }
