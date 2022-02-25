@@ -8,20 +8,18 @@ class BallList {
     private val ballNumberSet = mutableSetOf<Int>()
 
     fun buildBallListAndCheckRepeat(inputNumber: String) {
-        iterateBuildBall(inputNumber)
+        iterateBuildBallAndBuildSetBall(inputNumber)
         checkNoRepeat()
     }
 
-    private fun iterateBuildBall(inputString: String) {
+    private fun iterateBuildBallAndBuildSetBall(inputString: String) {
         for (i in 0 until 3) {
             buildBallAndBallNumberSet(i,inputString[i].toString().toInt())
         }
     }
 
     private fun buildBallAndBallNumberSet(position: Int,inputNumber: Int) {
-        val ball = Ball()
-        ball.buildBall(position,inputNumber)
-        ballList.add(ball)
+        ballList.add(Ball.builder(position, inputNumber))
         ballNumberSet.add(inputNumber)
     }
 

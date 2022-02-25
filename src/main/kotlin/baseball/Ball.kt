@@ -40,7 +40,7 @@ class Ball {
         return false
     }
 
-    fun equals(other: Ball): Boolean {
+    override fun equals(other: Any?): Boolean {
         if (other is Ball) {
             return position == other.position && number == other.number
         }
