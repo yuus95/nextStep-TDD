@@ -48,7 +48,11 @@ class Ball {
     }
 
     enum class BallStatus {
-        BALL, STRIKE, NOTHING
+        BALL, STRIKE, NOTHING;
+
+        fun isNotNothing():Boolean{
+            return this != NOTHING
+        }
     }
 
     companion object {
