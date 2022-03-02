@@ -12,9 +12,20 @@ class BallList {
         checkNoRepeat()
     }
 
+    fun buildBallListAndCheckRepeat(numberList: List<Int>) {
+        iterateBuildBallAndBuildSetBall(numberList)
+        checkNoRepeat()
+    }
+
     private fun iterateBuildBallAndBuildSetBall(inputString: String) {
         for (i in 0 until 3) {
             buildBallAndBallNumberSet(i, inputString[i].toString().toInt())
+        }
+    }
+
+    private fun iterateBuildBallAndBuildSetBall(numberList: List<Int>) {
+        for (i in 0 until 3) {
+            buildBallAndBallNumberSet(i, numberList[i])
         }
     }
 
@@ -41,6 +52,11 @@ class BallList {
         fun builder(stringInput: String): BallList {
             val ballList = BallList()
             ballList.buildBallListAndCheckRepeat(stringInput)
+            return ballList
+        }
+        fun builder(numberList: List<Int>): BallList {
+            val ballList = BallList()
+            ballList.buildBallListAndCheckRepeat(numberList)
             return ballList
         }
     }

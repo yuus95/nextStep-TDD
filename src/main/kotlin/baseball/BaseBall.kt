@@ -4,23 +4,39 @@ import baseball.list.BallList
 
 class BaseBall {
     val baseBall: BallList = BallList()
+    private var playResult = PlayResult()
 
-    fun playAndCheckBall(inputStringNumber: String): PlayResult {
-        val inputBallList =  BallList.builder(inputStringNumber)
-        val playResult = PlayResult()
-        return playResult
-    }
-
-    fun play(inputBallList: List<Ball>): MutableList<Ball.BallStatus> {
+    fun playAndReturnResult(input:String): PlayResult {
+        val inputBallList = BallList.builder(input)
         val ballStatusList = mutableListOf<Ball.BallStatus>()
-        for(input in inputBallList){
+        for (input in inputBallList.ballList) {
             val play = baseBall.play(input)
             if (play != null) {
                 ballStatusList.add(play)
             }
         }
-        return ballStatusList
+        getResult(ballStatusList)
+        return playResult
     }
 
+    fun getResult(): PlayResult {
+        return playResult
+    }
+
+    private fun getResult(ballStatusList: MutableList<Ball.BallStatus>) {
+        playResult = PlayResult()
+        for (x in ballStatusList) {
+            checkResult(x)
+        }
+    }
+
+    private fun checkResult(status: Ball.BallStatus) {
+        if (status == Ball.BallStatus.BALL) {
+            playResult.addBall()
+            return
+        }
+        playResult.addStrike()
+        return
+    }
 
 }

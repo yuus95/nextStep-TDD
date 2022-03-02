@@ -16,11 +16,9 @@ class BaseBallPlayTest {
     @Test
     fun playBalseBall_Strike(){
         //given
-        val inputBaseBallList = BallList.builder("152")
-        val play = baseballGame.play(inputBaseBallList.ballList)
-        println(play)
-        //when
-
-        //then
+        val inputBaseBallList = BallList.builder("123")
+        val play = baseballGame.playAndReturnResult(inputBaseBallList.ballList)
+        println(play.getBall())
+        println(play.getStrike())
     }
 }
