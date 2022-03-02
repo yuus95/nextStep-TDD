@@ -9,8 +9,8 @@ class BaseBall {
     fun playAndReturnResult(input:String): PlayResult {
         val inputBallList = BallList.builder(input)
         val ballStatusList = mutableListOf<Ball.BallStatus>()
-        for (input in inputBallList.ballList) {
-            val play = baseBall.play(input)
+        for (otherBall in inputBallList.ballList) {
+            val play = baseBall.play(otherBall)
             if (play != null) {
                 ballStatusList.add(play)
             }
