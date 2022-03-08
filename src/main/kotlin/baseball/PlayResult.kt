@@ -13,7 +13,7 @@ class PlayResult {
     }
 
     fun addStrike(){
-        ball +=1
+        strike +=1
     }
 
     fun getStrike():Int{

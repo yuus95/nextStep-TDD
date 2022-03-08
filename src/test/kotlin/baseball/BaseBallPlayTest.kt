@@ -1,6 +1,5 @@
 package baseball
 
-import baseball.list.BallList
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
@@ -16,8 +15,7 @@ class BaseBallPlayTest {
     @Test
     fun playBalseBall_Strike(){
         //given
-        val inputBaseBallList = BallList.builder("123")
-        val play = baseballGame.playAndReturnResult(inputBaseBallList.ballList)
+        val play = baseballGame.playAndReturnResult("123")
         println(play.getBall())
         println(play.getStrike())
     }
