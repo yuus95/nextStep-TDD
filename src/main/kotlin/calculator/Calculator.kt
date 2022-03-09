@@ -17,7 +17,13 @@ class Calculator {
 
         private fun buildSum(makeNumberList: List<String>): Int {
             var sum = 0
-            for (num in makeNumberList) sum += num.toInt()
+            for (num in makeNumberList) {
+                val intNum = num.toInt()
+                if (intNum <= MINUS_NUMBER) {
+                    throw  RuntimeException("마이너스는 안된다.")
+                }
+                sum += intNum
+            }
             return sum
         }
 
@@ -40,5 +46,7 @@ class Calculator {
             }
             return false
         }
+
+        const val MINUS_NUMBER = -1
     }
 }

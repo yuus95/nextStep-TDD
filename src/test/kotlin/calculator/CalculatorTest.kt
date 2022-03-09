@@ -37,4 +37,9 @@ class CalculatorTest {
     fun customSeparator(){
         Assertions.assertEquals(Calculator.splitAndSum("//;\n1;2;3"),6)
     }
+
+    @Test
+    fun negativeNumberError(){
+        Assertions.assertThrows(RuntimeException::class.java) { Calculator.splitAndSum("-1,2,3") }
+    }
 }
