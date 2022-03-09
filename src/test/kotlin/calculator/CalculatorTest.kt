@@ -9,15 +9,15 @@ class CalculatorTest {
 
     @Test
     fun empty_Test(){
-        val nullResult = Calculator.splitAndSum(null);
-        val emptyResult = Calculator.splitAndSum("");
+        val nullResult = Calculator.splitAndSum(null)
+        val emptyResult = Calculator.splitAndSum("")
         Assertions.assertEquals(nullResult,0)
         Assertions.assertEquals(emptyResult,0)
     }
 
     @Test
     fun onlyOneNumber(){
-        val oneResult = Calculator.splitAndSum("1");
+        val oneResult = Calculator.splitAndSum("1")
         Assertions.assertEquals(oneResult,1)
     }
 
@@ -35,10 +35,6 @@ class CalculatorTest {
     @Test
     @DisplayName("커스텀 구분자 사용하기")
     fun customSeparator(){
-        //given
-
-        //when
-
-        //then
+        Assertions.assertEquals(Calculator.splitAndSum("//;\n1;2;3"),6)
     }
 }
