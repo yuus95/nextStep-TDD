@@ -8,20 +8,29 @@ class BallList {
     private val ballNumberSet = mutableSetOf<Int>()
 
     fun buildBallListAndCheckRepeat(inputNumber: String) {
-        iterateBuildBall(inputNumber)
+        iterateBuildBallAndBuildSetBall(inputNumber)
         checkNoRepeat()
     }
 
-    private fun iterateBuildBall(inputString: String) {
+    fun buildBallListAndCheckRepeat(numberList: List<Int>) {
+        iterateBuildBallAndBuildSetBall(numberList)
+        checkNoRepeat()
+    }
+
+    private fun iterateBuildBallAndBuildSetBall(inputString: String) {
         for (i in 0 until 3) {
-            buildBallAndBallNumberSet(i,inputString[i].toString().toInt())
+            buildBallAndBallNumberSet(i, inputString[i].toString().toInt())
         }
     }
 
-    private fun buildBallAndBallNumberSet(position: Int,inputNumber: Int) {
-        val ball = Ball()
-        ball.buildBall(position,inputNumber)
-        ballList.add(ball)
+    private fun iterateBuildBallAndBuildSetBall(numberList: List<Int>) {
+        for (i in 0 until 3) {
+            buildBallAndBallNumberSet(i, numberList[i])
+        }
+    }
+
+    private fun buildBallAndBallNumberSet(position: Int, inputNumber: Int) {
+        ballList.add(Ball.builder(position, inputNumber))
         ballNumberSet.add(inputNumber)
     }
 
@@ -30,5 +39,25 @@ class BallList {
             return true
         }
         throw InvalidParameterException("중복된 숫자가 존재합니다")
+    }
+
+    fun play(answerBall: Ball): Ball.BallStatus? {
+        return ballList.map { it.play(answerBall) }
+            .firstOrNull {
+                it.isNotNothing()
+            }
+    }
+
+    companion object {
+        fun builder(stringInput: String): BallList {
+            val ballList = BallList()
+            ballList.buildBallListAndCheckRepeat(stringInput)
+            return ballList
+        }
+        fun builder(numberList: List<Int>): BallList {
+            val ballList = BallList()
+            ballList.buildBallListAndCheckRepeat(numberList)
+            return ballList
+        }
     }
 }
