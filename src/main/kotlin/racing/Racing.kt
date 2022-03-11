@@ -4,9 +4,14 @@ class Racing {
     var carList = mutableListOf<Car>()
     fun buildCarList(nameList: String) {
         val carNameList = nameList.split(",")
+        buildRepeatCar(carNameList)
+    }
+
+    private fun buildRepeatCar(carNameList: List<String>) {
         carNameList.forEach {
-            carList.add(Car())
-            carList.last().buildName(it)
+            val tempCar = Car()
+            tempCar.buildName(it)
+            carList.add(tempCar)
         }
     }
 }
