@@ -2,11 +2,13 @@ package racing
 
 class Racing {
     var carList = mutableListOf<Car>()
+    var maxNum = -1
+    var resultList = mutableListOf<String>()
     fun buildCarList(nameList: String) {
         buildRepeatCar(buildSplitList(nameList))
     }
 
-    private fun buildSplitList(nameList:String):List<String>{
+    private fun buildSplitList(nameList: String): List<String> {
         return nameList.split(",")
     }
 
@@ -35,19 +37,32 @@ class Racing {
     }
 
     fun getResult(): String {
-        var maxNum = -1
-        var resultList = mutableListOf<String>()
-        for(i in 0 until carList.size){
-            if(maxNum < carList[i].score){
-                maxNum = carList[i].score
-            }
+        for (i in 0 until carList.size) {
+            buildMaxNum(carList[i].score)
         }
 
-        for(i in 0 until carList.size){
-            if(maxNum == carList[i].score){
-                resultList.add(carList[i].name)
-            }
+        for (i in 0 until carList.size) {
+            buildResultList(carList[i])
         }
         return resultList.joinToString(",")
+    }
+
+    private fun buildResultList(car: Car) {
+        if (compareScore(car.score)) {
+            resultList.add(car.name)
+        }
+    }
+
+    private fun compareScore(score: Int): Boolean {
+        if (maxNum == score) {
+            return true
+        }
+        return false
+    }
+
+    private fun buildMaxNum(score: Int) {
+        if (maxNum < score) {
+            maxNum = score
+        }
     }
 }
