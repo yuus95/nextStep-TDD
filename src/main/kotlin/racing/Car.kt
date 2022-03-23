@@ -1,6 +1,6 @@
 package racing
 
-class Car {
+open class Car {
     var name: String = ""
     var score  = 0
     fun buildName(inputName: String) {
@@ -16,12 +16,16 @@ class Car {
         }
     }
 
-    private fun checkNameLength(inputName: String):Boolean{
+   private fun checkNameLength(inputName: String):Boolean{
         return inputName.length > CAR_MAX_LENGTH
     }
 
     private fun checkRandomNumberLength(randomNumber: Int):Boolean{
         return randomNumber >= 4
+    }
+
+    protected open fun testProtected(): Int{
+        return 4;
     }
 
     companion object{
